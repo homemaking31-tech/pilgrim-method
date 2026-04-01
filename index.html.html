@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Pilgrim Method — Notes From A Pilgrim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --burgundy: #6B1F2A;
+      --mauve: #A07878;
+      --soft-pink: #E8A0A0;
+      --rose: #C47070;
+      --blush: #F5E6E6;
+      --cream: #FDF8F8;
+      --text-dark: #3A1A1E;
+      --text-mid: #7A4A50;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 0.5px solid var(--soft-pink);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--burgundy);
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mauve);
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--burgundy);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+    .hero-body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-mid);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 auto 2.5rem;
+      max-width: 240px;
+    }
+    .divider-line { flex: 1; height: 0.5px; background: var(--soft-pink); }
+    .divider-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--soft-pink); }
+
+    /* FORM CARD */
+    .form-card {
+      background: white;
+      border: 0.5px solid #EDCFCF;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+    }
+    .form-label {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--mauve);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      border: 0.5px solid #EDCFCF;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: var(--rose); }
+    .cta-btn {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--burgundy);
+      color: #FDF0F0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-bottom: 0.75rem;
+    }
+    .cta-btn:hover { background: #561828; }
+    .cta-btn:active { transform: scale(0.99); }
+    .form-note { font-size: 12px; color: var(--mauve); text-align: center; }
+
+    /* STEPS SECTION */
+    .what-you-get {
+      background: var(--blush);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--burgundy);
+      margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--mauve);
+      margin-bottom: 2.5rem;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .step-card {
+      background: white;
+      border: 0.5px solid #EDCFCF;
+      border-radius: 12px;
+      padding: 1.4rem 1.25rem;
+      text-align: left;
+    }
+    .step-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--soft-pink);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .step-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--burgundy);
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .step-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* QUOTE */
+    .testimonial {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      line-height: 0.5;
+      color: var(--soft-pink);
+      margin-bottom: 1rem;
+    }
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .quote-attr {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mauve);
+    }
+
+    /* FOOTER CTA */
+    .footer-cta {
+      background: var(--burgundy);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: #FDF0F0;
+      margin-bottom: 0.75rem;
+    }
+    .footer-cta-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: #E8B0B0;
+      margin-bottom: 1.75rem;
+    }
+    .cta-btn-light {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: transparent;
+      color: #FDF0F0;
+      border: 0.5px solid #E8B0B0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cta-btn-light:hover { background: rgba(255,255,255,0.1); }
+
+    .footer-fine {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 12px;
+      color: var(--mauve);
+      border-top: 0.5px solid #EDCFCF;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .hero { padding: 3rem 1.25rem 2rem; }
+      .form-card { padding: 2rem 1.25rem; }
+      .steps { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-brand">Notes From A Pilgrim</span>
+  </nav>
+
+  <section class="hero">
+    <p class="eyebrow">A free gift for you</p>
+    <h1 class="hero-title">
+      Are you tired of reading Scripture<br>
+      and feeling like <em>nothing is sticking?</em>
+    </h1>
+    <p class="hero-body">
+      The Pilgrim Method is a simple, beautiful Bible study framework designed for women who want to think deeply, study faithfully, and grow in their love for God's Word — not just read it.
+    </p>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-dot"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- ✏️ REPLACE THIS FORM WITH YOUR MAILERLITE EMBED CODE -->
+    <div class="form-card">
+      <label class="form-label">Your first name</label>
+      <input class="form-input" type="text" placeholder="Grace" />
+      <label class="form-label">Your email address</label>
+      <input class="form-input" type="email" placeholder="grace@example.com" />
+      <button class="cta-btn">Send me the Pilgrim Method — it's free</button>
+      <p class="form-note">No spam, ever. Just quiet, meaningful notes from one pilgrim to another.</p>
+    </div>
+  </section>
+
+  <section class="what-you-get">
+    <h2 class="section-title">The Pilgrim Method</h2>
+    <p class="section-sub">Seven steps that move Scripture from the page into your heart</p>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-letter">P</div>
+        <div class="step-name">Pause &amp; Prepare</div>
+        <div class="step-desc">Begin with prayer. Still your heart and invite God into your study before you read a word.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-letter">I</div>
+        <div class="step-name">Immerse in the Text</div>
+        <div class="step-desc">Read the passage slowly and fully. Let the words wash over you before analysing anything.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-letter">L</div>
+        <div class="step-name">Look Closely</div>
+        <div class="step-desc">Observe what is actually there. Who, what, when, where — see what the text truly says.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-letter">G</div>
+        <div class="step-name">Gather Context</div>
+        <div class="step-desc">Step outside the passage. Understand its history, culture, and place in the larger story.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-letter">R</div>
+        <div class="step-name">Relate Across</div>
+        <div class="step-desc">Find other verses that speak to the same truth. Let Scripture interpret Scripture.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-letter">I</div>
+        <div class="step-name">Interpret Carefully</div>
+        <div class="step-desc">Ask what the author intended. Seek the meaning God breathed into these words.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-letter">M</div>
+        <div class="step-name">Make it Personal</div>
+        <div class="step-desc">Apply it. Let Scripture do its transforming work in your everyday, ordinary life.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">
+      This is a space for learning to use the minds God has given us — to reason, to discern, and to grow. Not that we will always have every answer, but that we are willing to seek.
+    </p>
+    <p class="quote-attr">— Notes from a Pilgrim</p>
+  </section>
+
+  <section class="footer-cta">
+    <h2 class="footer-cta-title">Ready to study differently?</h2>
+    <p class="footer-cta-sub">Join women learning to love God with all their heart, soul, mind, and strength.</p>
+    <button class="cta-btn-light">Get the Pilgrim Method — free</button>
+  </section>
+
+  <p class="footer-fine">© Notes From A Pilgrim &nbsp;·&nbsp; Made with love for women on the journey</p>
+
+</body>
+</html>
